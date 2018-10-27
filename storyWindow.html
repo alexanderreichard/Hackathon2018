@@ -6,9 +6,26 @@
     <p id="cat">This is the storyWindow</p>
 
     <script>
-        console.log(sessionStorage.getItem("storyDirectory"));
-        var myText = document.getElementById("cat");
-        myText.innerText = sessionStorage.getItem("storyDirectory");
+//        console.log(sessionStorage.getItem("storyDirectory"));
+//        var myText = document.getElementById("cat");
+//        myText.innerText = sessionStorage.getItem("storyDirectory");
+
+        var filepath = sessionStorage.getItem("storyDirectory");
+
+        //var remote = require('remote'); // Load remote compnent that contains the dialog dependency
+        //var dialog = remote.require('dialog'); // Load the dialogs component of the OS
+        var fs = require('fs'); // Load the File System to execute our common tasks (CRUD)
+
+        fs.readFile(filepath, 'utf-8', (err, data) => {
+            if(err){
+                alert("An error ocurred reading the file :" + err.message);
+                return;
+            }
+
+            // Change how to handle the file content
+            console.log("The file content is : " + data);
+        });
+
     </script>
 
 </head>
