@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <p id="cat">This is the storyWindow</p>
+
+    <script>
+        console.log(sessionStorage.getItem("storyDirectory"));
+        var myText = document.getElementById("cat");
+        myText.innerText = sessionStorage.getItem("storyDirectory");
+    </script>
+
+</head>
+<body>
+
+</body>
+</html>
