@@ -2,29 +2,57 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-    <p id="cat">This is the storyWindow</p>
+    <link rel="stylesheet" href ="stylesheets/style.css">
+
+    <title id="title"></title>
+
+    <div class="options">
+        <a button class="myButton">Auto type</a>
+        <a button class="myButton">Close</a>
+        <a button class="myButton">Mute</a>
+    </div>
+
+    <div class="main">
+
+        <p id="storyWindow"> <!--the writing will go in here --> </p>
+
+        <div class="buttons">
+            <a class="myButton">I am a button</a>
+        </div>
+
+    </div>
 
     <script>
-//        console.log(sessionStorage.getItem("storyDirectory"));
-//        var myText = document.getElementById("cat");
-//        myText.innerText = sessionStorage.getItem("storyDirectory");
 
+        var storyWindow = document.getElementById("storyWindow");
         var filepath = sessionStorage.getItem("storyDirectory");
-
-        //var remote = require('remote'); // Load remote compnent that contains the dialog dependency
-        //var dialog = remote.require('dialog'); // Load the dialogs component of the OS
         var fs = require('fs'); // Load the File System to execute our common tasks (CRUD)
 
+        //read and output
         fs.readFile(filepath, 'utf-8', (err, data) => {
+
+            //error file
             if(err){
-                alert("An error ocurred reading the file :" + err.message);
+                alert("An error occurred reading the file :" + err.message);
                 return;
             }
 
-            // Change how to handle the file content
-            console.log("The file content is : " + data);
+            //debug output
+            console.log("The file content is: " + data);
+
+            //iterators for key-press functionality
+            var i=0;
+            var splitted = data.split(" ");
+
+            document.addEventListener('keydown', function(event) {
+                if(i<splitted.length){
+                    storyWindow.innerText = storyWindow.innerText + " " + splitted[i];
+                    i++;
+                }
+            });
+
         });
+
 
     </script>
 
