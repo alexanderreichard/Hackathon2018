@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Import a Story</title>
+
+    <div id="holder" class="fileDrop">
+        Drag your file here
+    </div>
+
+    <script>
+        console.log("Hello world"); //check if console works
+        document.addEventListener('drop', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            for (let f of e.dataTransfer.files) {
+                console.log('File(s) you dragged here: ', f.path);
+                sessionStorage.setItem("storyDirectory", f.path);
+                //TODO: change to dropped story image and put button
+                window.location.href = "./storyWindow.html";
+            }
+        });
+        document.addEventListener('dragover', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+        });
+    </script>
+
+    <!--TODO: Button to open filesystem-->
+    <!--/*-->
+    <!--OPEN FILE MANUALLY:-->
+    <!--*/-->
+
+    <!--// var app = require('electron').remote;-->
+    <!--// var dialog = app.dialog;-->
+    <!--//-->
+    <!--// //filesystem-->
+    <!--// var fs = require('fs'); // Load the File System to execute our common tasks (CRUD)-->
+    <!--//-->
+    <!--// dialog.showOpenDialog({-->
+    <!--//     title:"Select a folder:",-->
+    <!--//     properties: ["openDirectory"]-->
+    <!--// }, (folderPaths) => {-->
+    <!--//     // folderPaths is an array that contains all the selected paths-->
+    <!--//     if (fileNames === undefined) {-->
+    <!--//         console.log("No destination folder selected");-->
+    <!--//         return;-->
+    <!--//     } else {-->
+    <!--//         console.log(folderPaths);-->
+    <!--//     }-->
+    <!--// });-->
+
+</head>
+<body>
+
+</body>
+</html>
