@@ -13,7 +13,7 @@
     </div>
 
     <div class="main">
-
+        <h1 id="chapterHeader"></h1>
         <p id="storyWindow"> <!--the writing will go in here --> </p>
 
         <div class="buttons">
@@ -42,16 +42,43 @@
 
             //iterators for key-press functionality
             var i=0;
-            var splitted = data.split(" ");
+            var splitted = data.split(/[\s]/);
 
             document.addEventListener('keydown', function(event) {
                 if(i<splitted.length){
-                    storyWindow.innerText = storyWindow.innerText + " " + splitted[i];
-                    i++;
+
+                    switch (splitted[i++]){
+
+                        //Handle headings
+                        case ('{HEADING}'):
+                            var heading = splitted[i++];
+                            console.log("this is before the while");
+                            while (splitted[i] !== "{/HEADING}"){
+                                console.log("this is in the while");
+                                heading = heading + " " + splitted[i++];
+                            }
+                            document.getElementById("chapterHeader").innerText = heading;
+                            break;
+
+                        //Handle options
+                        case "options":
+                            //process options
+                            break;
+
+                        //Default words
+                        default:
+                            storyWindow.innerText = storyWindow.innerText + " " + splitted[i];
+                            break;
+
+                    }
                 }
             });
 
         });
+
+        function processElement(token) {
+
+        }
 
 
     </script>
