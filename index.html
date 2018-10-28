@@ -1,16 +1,25 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Hello World!</title>
-  <link rel="stylesheet" href ="stylesheets/style.css">
+  <title>Select Story</title>
+  <link rel="stylesheet" href ="stylesheets/headstyle.css">
 </head>
 <body>
+<div id="title">Raven's Desk</div>
+<div class="stories">
+  <form action="./openDirectory.html"><button class="myButton" href="./openDirectory.html"><b>Open File</b></button></form>
 
+  <form action="index.html"><button class="myButton" href="index.html"><b>Science Fiction</b></button></form>
+  <form action="index.html"><button class="myButton" href="index.html"><b>Fantasy</b></button></form>
+  <form action="index.html"><button class="myButton" href="index.html"><b>Adventure</b></button></form>
+  <form action="index.html"><button class="myButton" href="index.html"><b>Historical Fiction</b></button></form>
+  <form action="index.html"><button class="myButton" href="index.html"><b>Other</b></button></form>
 
-<script>
-    // You can also require other files to run in this process
-    window.location.href = "openDirectory.html";
-</script>
+  <script>
+      sessionStorage.setItem("sound", "on");
+  </script>
+
+</div>
 </body>
 </html>

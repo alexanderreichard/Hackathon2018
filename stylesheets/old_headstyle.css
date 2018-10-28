@@ -1,0 +1,27 @@
+body {
+    background-image: url("old_paper2.jpg");
+}
+#title {
+    font-family: "Courier New";
+    font-size: 100px;
+    text-align: center;
+    padding: 50px;
+}
+.stories {
+    text-align: center;
+}
+.myButton{
+    display:inline-block;
+    cursor:pointer;
+    color: black;
+    font-size:25px;
+    font-family: "Courier New";
+    border: none;
+    padding:8px 17px;
+    text-decoration:none;
+    border-radius: 25px;
+    background: transparent;
+}
+.myButton:hover {
+    background-color: floralwhite;
+}

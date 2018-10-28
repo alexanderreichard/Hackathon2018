@@ -8,13 +8,13 @@
 
     <div class="options">
         <a button class="myButton">Auto type</a>
-        <a button class="myButton">Close</a>
-        <a button class="myButton">Mute</a>
+        <a button href="./index.html" class="myButton">Close</a>
+        <a button id="muteButton" class="myButton">Sound: On</a>
     </div>
 
     <div class="main">
         <h1 id="chapterHeader"></h1>
-        <p id="storyWindow"> <!--the writing will go in here --> </p>
+        <p class="mainText" id="storyWindow"> <!--the writing will go in here --> </p>
 
         <div class="buttons" id="buttonBox" >
         </div>
@@ -23,19 +23,41 @@
 
     <script>
 
+        //clackey keys
+        var audio = new Audio("keystroke2.mp3");
+
+        //mute button
+        var muteButton = document.getElementById("muteButton");
+        if (sessionStorage.getItem("sound") === "off"){
+            muteButton.innerText = "Sound: Off";
+        }
+
+        muteButton.onclick = function () {
+            if (sessionStorage.getItem("sound") === "on"){
+                muteButton.innerText = "Sound: Off";
+                sessionStorage.setItem("sound", "off");
+                console.log("turned it off " + sessionStorage.getItem("soundOn"));
+            } else {
+                muteButton.innerText = "Sound: On";
+                sessionStorage.setItem("sound", "on");
+                console.log("turned it on " + sessionStorage.getItem("soundOn"));
+
+            }
+        }
+
         var storyWindow = document.getElementById("storyWindow");
         var filepath = sessionStorage.getItem("storyDirectory");
         var fs = require('fs'); // Load the File System to execute our common tasks (CRUD)
 
 
-        var currentChapter = "start";
+        //var currentChapter = "start";
         const extension = ".txt";
 
 
             console.log("Entered while loop");
 
             //read and output
-            fs.readFile(filepath + "/" + currentChapter + extension, 'utf-8', (err, data) => {
+            fs.readFile(filepath + "/" + sessionStorage.getItem("currentChapter") + extension, 'utf-8', (err, data) => {
 
                 currentChapter = "END";
 
@@ -53,6 +75,12 @@
                 var splitted = data.split(/[\s]/);
 
                 document.addEventListener('keydown', function(event) {
+
+                    //play keystroke
+                    if (sessionStorage.getItem("sound") === "on"){
+                        audio.play();
+                    }
+
                     if(i<splitted.length){
 
                         switch (splitted[i]){
@@ -72,8 +100,6 @@
 
                             //Handle options
                             case ("{OPTIONS}"):
-//                            var buttonBox = document.createElement('div');
-//                            buttonBox.className = "buttons";
 
                                 var buttonBox = document.getElementById("buttonBox");
                                 i++;
@@ -91,13 +117,16 @@
 
                                     var opButton = document.createElement('button');
                                     opButton.className = "myButton";
+                                    opButton.id = fileName;
                                     opButton.appendChild(document.createTextNode(buttonName));
                                     buttonBox.appendChild(opButton);
 
-                                    opButton.onclick = function () {
+                                    opButton.onclick = function (b) {
+                                        var buttonId = b.toElement.id;
                                         // window.location.href = "./" + fileName + ".html";
-                                        buttonBox.innerText = ""; //clear buttons
-
+                                        //buttonBox.innerText = ""; //clear buttons
+                                        sessionStorage.setItem("currentChapter", buttonId);
+                                        window.location.href = "./storyWindow.html";
                                     }
 
                                     console.log(splitted[i]);
@@ -118,13 +147,6 @@
                 });
 
             });
-
-
-
-
-        function processElement(token) {
-
-        }
 
 
     </script>
