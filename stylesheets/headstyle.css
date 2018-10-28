@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css?family=Crimson+Text|Sue+Ellen+Francisco');
+
+body {
+    background-image: url("crumpled_paper.jpg");
+}
+#title {
+    font-family: 'Sue Ellen Francisco', cursive;
+    font-size: 100px;
+    text-align: center;
+    padding: 50px;
+}
+.stories {
+    text-align: center;
+}
+.myButton{
+    display:inline-block;
+    cursor:pointer;
+    color: black;
+    font-size:25px;
+    font-family: "Courier New";
+    /*font-family: 'Roboto', sans-serif;*/
+    border: none;
+    padding:8px 17px;
+    text-decoration:none;
+    border-radius: 25px;
+    background: transparent;
+}
+.myButton:hover {
+    background-color: floralwhite;
+}

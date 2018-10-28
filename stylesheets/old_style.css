@@ -1,0 +1,38 @@
+body {
+    background: papayawhip;
+    font-family: cursive;
+}
+
+.main {
+    margin-left: 140px;
+    margin-right: 140px;
+}
+.options {
+    width: 130px;
+    position: fixed;
+    top: 20px;
+    left: 10px;
+    z-index: 1;
+    overflow-x: hidden;
+    padding: 8px 0;
+}
+.buttons {
+     text-align: center;
+ }
+.myButton {
+    display:inline-block;
+    cursor:pointer;
+    color: dimgray;
+    font-size:17px;
+    padding:8px 8px;
+    text-decoration:none;
+}
+.myButton:hover {
+    background-color: floralwhite;
+}
+.buttons .myButton{
+    color: black;
+    background-color: floralwhite;
+    border-radius: 25px;
+}
+

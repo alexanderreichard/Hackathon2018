@@ -2,13 +2,27 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href ="stylesheets/style.css">
+
     <title>Import a Story</title>
 
-    <div id="holder" class="fileDrop">
-        Drag your file here
+    <a button href="./index.html" class="myButton">&times;</a>
+
+    <div id="center" class="fileDrop">
+
+        <div id="holder" class="dragText" style="font-family: 'Courier New'" >
+            <p>Drag files on this page, or</p>
+        </div>
+
+        <a button class="fileSystemButton" id="chooseFileButton" style="font-family: 'Courier New'">open filesystem</a>
+
     </div>
 
     <script>
+
+        //TODO: my thingy
+        sessionStorage.setItem("currentChapter", "start");
+
         console.log("Hello world"); //check if console works
         document.addEventListener('drop', function (e) {
             e.preventDefault();
@@ -27,30 +41,35 @@
         });
     </script>
 
+
     <script>
-        /*
-    OPEN FILE MANUALLY:
-    */
+        //TODO: Button to open filesystem
+        //OPEN FILE MANUALLY:
 
-        // var app = require('electron').remote;
-        // var dialog = app.dialog;
-        //
-        // //filesystem
-        // var fs = require('fs'); // Load the File System to execute our common tasks (CRUD)
-        //
-        // dialog.showOpenDialog({
-        //     title:"Select a folder:",
-        //     properties: ["openDirectory"]
-        // }, (folderPaths) => {
-        //     // folderPaths is an array that contains all the selected paths
-        //     if (fileNames === undefined) {
-        //         console.log("No destination folder selected");
-        //         return;
-        //     } else {
-        //         console.log(folderPaths);
-        //     }
-        // });
+        var directoryButton = document.getElementById("chooseFileButton");
+        directoryButton.onclick = function() {
+            const app = require('electron').remote;
+            const dialog = app.dialog;
 
+            //filesystem
+            const fs = require('fs'); // Load the File System to execute our common tasks (CRUD)
+
+            dialog.showOpenDialog({
+                title:"Select a folder:",
+                properties: ["openDirectory"]
+            }, (folderPaths) => {
+                // folderPaths is an array that contains all the selected paths
+                if (folderPaths === undefined) {
+                    console.log("No destination folder selected");
+                    return;
+                } else {
+                    console.log(folderPaths);
+                    sessionStorage.setItem("storyDirectory", folderPaths[0]);
+                    window.location.href = "./storyWindow.html";
+                    //at this point there is a path
+                }
+            });
+        };
     </script>
 
 </head>
