@@ -4,13 +4,19 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href ="stylesheets/style.css">
 
-    <title id="title"></title>
+    <title id="title">Read View</title>
 
     <div class="options">
-        <a button class="myButton">Auto type</a>
-        <a button href="./index.html" class="myButton">Close</a>
-        <a button id="muteButton" class="myButton">Sound: On</a>
+        <a button href="./index.html" class="myButton">&times;</a>
+        <div class="bottom_options">
+            <a button id="replayButton" class="myButton">Replay</a>
+            <a button id="muteButton" class="myButton">Sound: On</a>
+        </div>
+        <img src="ink_splatter.png" alt="splatter" height="100" width="100" style="padding-top: 500px" style="position: fixed">
+
     </div>
+
+
 
     <div class="main">
         <h1 id="chapterHeader"></h1>
@@ -21,7 +27,17 @@
 
     </div>
 
+
     <script>
+
+        //var currentChapter = "start";
+        const extension = ".txt";
+
+        var replayButton = document.getElementById("replayButton");
+        replayButton.onclick = function () {
+            sessionStorage.setItem("currentChapter", "start");
+            window.location.href = "./storyWindow.html";
+        }
 
         //clackey keys
         var audio = new Audio("keystroke2.mp3");
@@ -49,9 +65,6 @@
         var filepath = sessionStorage.getItem("storyDirectory");
         var fs = require('fs'); // Load the File System to execute our common tasks (CRUD)
 
-
-        //var currentChapter = "start";
-        const extension = ".txt";
 
 
             console.log("Entered while loop");

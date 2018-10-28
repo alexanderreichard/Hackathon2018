@@ -24,7 +24,7 @@ body {
     cursor:pointer;
     color: dimgray;
     font-size:17px;
-    padding:8px 17px;
+    padding:8px 8px;
     text-decoration:none;
 }
 .myButton:hover {

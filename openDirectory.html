@@ -3,10 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href ="stylesheets/style.css">
+
     <title>Import a Story</title>
 
-    <div id="holder" class="fileDrop" >
-        Drag your file here
+    <a button href="./index.html" class="myButton">&times;</a>
+
+    <div id="center" class="fileDrop">
+
+        <div id="holder" class="dragText" style="font-family: 'Courier New'" >
+            <p>Drag files on this page, or</p>
+        </div>
+
+        <a button class="fileSystemButton" id="chooseFileButton" style="font-family: 'Courier New'">open filesystem</a>
+
     </div>
 
     <script>
@@ -32,9 +41,6 @@
         });
     </script>
 
-    <div>
-        <a button class="myButton" id="chooseFileButton">Retrieve Files</a>
-    </div>
 
     <script>
         //TODO: Button to open filesystem
